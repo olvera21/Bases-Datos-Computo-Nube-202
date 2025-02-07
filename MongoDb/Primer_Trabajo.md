@@ -1,18 +1,22 @@
 # CRUD y consultas en MongoDB
 
 ## Crear una base de datos
-Solo se crea si contiene por lo menos una colección
+- Solo se crea si contiene por lo menos una colección
 use bd1
 
 ## Cómo crear una colección
+``` json
 use bd1
 db.createCollection("Empleado")
+``` 
 
 ## Mostrar las colecciones
+``` json
 show collections
+``` 
 
 ## Insertar un documento
-json
+```json
 db.coleccion.insertOne(
     {
         nombre: 'Estefany',
@@ -21,10 +25,10 @@ db.coleccion.insertOne(
         ciudad: 'Huehuetoca'
     }
 )
-
+```
 
 ## Inserción de un documento más complejo con array
-json
+``` json
 db.alumnos.insertOne(
  {
    nombre: "Martha",
@@ -37,9 +41,9 @@ db.alumnos.insertOne(
  }
  )
  
-
+```
  ## Inserción de documentos más complejos con documentos anidados
- json
+ ``` json
 db.alumnos.insertOne(
  {
     nombre: "Naomi",
@@ -56,7 +60,10 @@ db.alumnos.insertOne(
         }
  }
  )
+```
 
+
+``` json
 db.alumnos.insertOne(
  {
     nombre: "Sorge",
@@ -74,45 +81,4 @@ db.alumnos.insertOne(
         }
  }
  ) 
-# Inserción de documentos muy complejos
-db.alumnos.insertMany([
-  {
-    _id: 12,
-    nombre: "Roberto Gomez",
-    apellido: "Gomez",
-    edad: "23",
-    descripcion: "Es un Comediante bueno"
-  },
-  {
-    nombre: "Luiz",
-    apellido: "Suarez",
-    edad: 43,
-    habilidades: ["Correr", "dormir", "Morder"],
-    direcciones: {
-      calle: "del infierno",
-      numero: 666
-    },
-    esposas: [
-      {
-        nombre: "Marisol",
-        edad: 20,
-        pension: 350,
-        hijos: ["Joaquin", "Bridget"]
-      },
-      {
-        nombre: "Dorien",
-        edad: 46,
-        pension: 6500,
-        complaciente: true
-      }
-    ]
-  }
-])
-
-# Practica 
-1. Bases de Datos, colecciones e insert
-    -Nos conectamos con mongosh a mongodb
-    -Crear una base de datos denominada curso
-    -Verificar que la base de datos no existe
-    -Crear una colecion denomidad facturas 
-    db.create collectio
+ ```
