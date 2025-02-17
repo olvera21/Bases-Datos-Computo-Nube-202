@@ -264,4 +264,98 @@ db.libros.find({},{titulo:1, editorial:1,_id:0})
 2. Seleccionar todos los documentos los documentos de la editorial Planeta mostrando el titulo y la editorial 
 ``` json
 db.libros.find({editorial:'Planeta'},{_id:0, titulo:1, editorial:1})
-```|
+```
+## Insertamos un documento
+ ``` json
+db.libros.insertOne({
+    _id: 10,
+    titulo: 'Mongo en entornos graficos',
+    editorial: 'Terra',
+    precio: 125
+})
+```
+## Operador exist(Permite saner si un campo se encuentra o no en un documento)
+``` json
+db.libros.find( { editorial: { exists: true } })
+```
+``` json
+
+1. Mostrar todos los documentos que no contengan el campo cantidad
+
+``` json
+db.libros.find( { cantidad: { $exists: false }})
+
+``` 
+
+## Operador Type ( Permite preguntar si un determinado campo corresponde con un tipo )
+
+[Operador Type](https://www.mongodb.com/docs/manual/reference/operator/query/type/#mongodb-query-op.-type )
+
+2. Mostrar todos los documentos donde el precio sean dobles
+``` json
+
+ db.libros.find({precio:{$type:16}})
+
+```
+``` json
+db.libros.inserOne(
+  {
+    _id:11,
+    editorial: 'Terra',
+    precio:125.4
+    cantidad:20
+  }
+)
+
+``` json
+
+ db.libros.find({precio:{$type:1}}, {_id:0})
+
+```
+
+``` json
+
+ db.libros.find({precio:{$type:1}}, {_id:0, cantidad:0})
+
+```
+
+
+``` json
+
+db.libros.insertMany([
+ {
+    _id: 12,
+    titulo: 'IA',
+    editorial: 'Terra',
+    precio: 125, 
+	cantidad: 20
+  },
+  {
+    _id: 13,
+    titulo: 'Python para todos',
+    editorial: 2001,
+    precio: 200, 
+	cantidad: 30
+  }]
+  )
+```
+
+1. Seleccionar los documentos donde la editorial sea de tipo entero
+``` json
+db1> db.libros.find({editorial:{$type:16}})
+db1> db.libros.find({editorial:{$type:int}})
+```
+
+2. Seleccionar todos los documentos donde la editorial sea string
+
+``` json
+db1> db.libros.find({editorial:{$type:16}})
+db1> db.libros.find({editorial:{$type:'string'}})
+```
+
+## Practica de consultas
+1. Instalar las tools de mongosh
+[DatabaseTools](https://www.mongodb.com/try/download/database-tools)
+
+
+
