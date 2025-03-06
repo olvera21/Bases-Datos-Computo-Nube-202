@@ -546,3 +546,5 @@ db.ejemplo.insertOne({ nombre: 'Chapuin' } )
 ``` json
 db.ejemplo.drop()
 ```
+
+mongosh "mongodb+srv://cluster0.fbxfu.mongodb.net/" --apiVersion 1 --username <db_username>
