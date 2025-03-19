@@ -1,12 +1,12 @@
 # Arrays y documentos anidados
 
-1. Para hacer esta práctica vamos a cargar unos datos ficticios de empresas.
+- Para hacer esta práctica vamos a cargar unos datos ficticios de empresas.
 
-2. Tienes un fichero denominado “personas.json”
+- Tienes un fichero denominado “personas.json”
 
-3. Debes poner el resultado de las consultas en cada apartado
+- Debes poner el resultado de las consultas en cada apartado
 
-- Buscar las personas que vivan en Colombia
+1. Buscar las personas que vivan en Colombia
 ```json
 db.Personas.find({ "direccion.pais": "Colombia" })
 ```
@@ -28,7 +28,7 @@ db.Personas.find({ "direccion.pais": "Colombia" })
   ingresos: 7387
 }
 ```
-- Personas a las que le guste el color rosa
+2. Personas a las que le guste el color rosa
 ```json
 db.Personas.find({ "colores": { $in: ["pink", "rosa"] } })
 ```
@@ -68,7 +68,7 @@ db.Personas.find({ "colores": { $in: ["pink", "rosa"] } })
   ingresos: 10407
 }
 ```
-- Personas cuyo tercer color preferido sea el amarillo (yellow). Recuerda que los arrays comienzan por Cero. Deben salir 3
+3. Personas cuyo tercer color preferido sea el amarillo (yellow). Recuerda que los arrays comienzan por Cero. Deben salir 3
 ```json
 db.Personas.find({ "colores.2": "yellow" })
 ```
@@ -127,6 +127,7 @@ db.Personas.find({ "colores.2": "yellow" })
   ingresos: 6340
 }
 ```
+4. Personas cuyo tercer color preferido sea el amarillo (yellow) y que vivan en Mauritania (debe salir uno)
 ```json
 db.Personas.find({
   "colores.2": "yellow",
@@ -151,7 +152,7 @@ db.Personas.find({
   ingresos: 7435
 }
 ```
-- Usando el operador $all averiguar las personas que les gusta el plata (silver) y el salmon (salmon)
+5. Usando el operador $all averiguar las personas que les gusta el plata (silver) y el salmon (salmon)
 ```json
 db.Personas.find({
   "colores": { $all: ["silver", "salmon"] }
@@ -177,4 +178,32 @@ db.Personas.find({
 }
 ```
 
-- Con el operador $elemMatch, averigua las personas que les guste el rosa (Pink) o el rojo (red)
+6. Con el operador $elemMatch, averiguar las personas que les guste el rosa (pink) o el rojo (red)
+```json
+db.personas.find({
+    colores: {$elemMatch: {$in: ["pink", "red"]}}
+})
+```
+```json
+[
+  {
+    "nombre": "Laura Oquendo",
+    "direccion": {
+      "calle": "2800 Samir Trail",
+      "ciudad": "Bijelo Polje",
+      "pais": "Montenegro"
+    },
+    "colores": ["pink", "blue", "teal"],
+    "ingresos": 8707
+  },
+  {
+    "nombre": "Sergi Cordero",
+    "direccion": {
+      "calle": "0605 Delfina Lodge",
+      "ciudad": "Obiozara",
+      "pais": "Nigeria"
+    },
+    "colores": ["indigo", "sky blue", "red"],
+    "ingresos": 7134
+  }
+]
